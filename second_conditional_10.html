@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Second Conditional — 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Literata:opsz,wght@7..72,400;7..72,600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#eef1f6; --paper:#ffffff; --ink:#18233a; --muted:#5a6680; --line:#d3d9e6;
+  --accent:#2f4fd1; --accent-soft:#e3e8fb; --mark:#f2b630;
+  --ok:#1d8a55; --ok-soft:#e1f3ea; --bad:#c4372f; --bad-soft:#fbe5e3;
+  --c1:#2f4fd1; --c2:#0f8f8f; --c3:#b5521b; --c4:#8a3fb8;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Literata",Georgia,"Times New Roman",serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#10151f; --paper:#18202e; --ink:#e7ebf4; --muted:#9aa5bd; --line:#2c374b;
+  --accent:#8ea4ff; --accent-soft:#232e4d; --mark:#f2c14e;
+  --ok:#4fcb8c; --ok-soft:#173326; --bad:#ff7d73; --bad-soft:#3a1f1e;
+  --c1:#8ea4ff; --c2:#4fd0cf; --c3:#f0955c; --c4:#c992ef; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 60px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,3.1rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:1.5rem;font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted);max-width:62ch}
+header{display:flex;flex-direction:column;gap:12px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px clamp(16px,4vw,28px);display:flex;flex-direction:column;gap:16px}
+.student{display:grid;grid-template-columns:2fr 1fr;gap:12px}
+@media (max-width:480px){.student{grid-template-columns:1fr}}
+label.f{display:flex;flex-direction:column;gap:4px;font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.04em}
+input[type=text],textarea{font:inherit;font-family:var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input[readonly],textarea[readonly]{cursor:default}
+details.rules summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+details.rules summary::-webkit-details-marker{display:none}
+details.rules summary::after{content:"+";font-family:var(--mono);font-size:1.3rem;color:var(--accent)}
+details.rules[open] summary::after{content:"–"}
+.rulegrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media (max-width:560px){.rulegrid{grid-template-columns:1fr}}
+.rule{border-top:4px solid var(--c);padding:12px 2px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.rule h3{color:var(--c)}
+.formula{font-family:var(--mono);font-size:.82rem;background:var(--bg);border-radius:6px;padding:4px 8px;align-self:flex-start}
+.rule .use{font-size:.92rem;color:var(--muted)}
+.rule .ex{font-size:.95rem;font-style:italic}
+.ex-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.ex-head .score{font-family:var(--mono);font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.task{color:var(--muted);font-size:.95rem}
+ol.items{margin:0;padding:0;list-style:none;counter-reset:q;display:flex;flex-direction:column;gap:14px}
+ol.items>li{counter-increment:q;display:grid;grid-template-columns:2rem 1fr;gap:4px 8px}
+ol.items>li::before{content:counter(q);font-family:var(--mono);font-size:.85rem;color:var(--muted);padding-top:3px}
+.q{min-width:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.opt{font-family:var(--mono);font-size:.85rem;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--mark);outline-offset:2px}
+.opt[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:600}
+.opt.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.opt.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.opt:disabled{cursor:default}
+.opt:disabled:not(.ok):not(.bad){opacity:.5}
+.opt:disabled:hover:not(.ok):not(.bad){border-color:var(--line)}
+.gap{display:inline-block;width:11.5em;max-width:100%;padding:3px 8px;font-size:.95rem;margin:2px 2px}
+.hintv{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.story{line-height:2.2}
+.gap.ok,.ans.ok{border-color:var(--ok);background:var(--ok-soft)}
+.gap.bad,.ans.bad{border-color:var(--bad);background:var(--bad-soft)}
+.fb{grid-column:2;font-size:.88rem}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)}
+.fbline{font-size:.88rem;font-family:var(--mono)}
+mark{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--mark) 55%,transparent) 60%);color:inherit;padding:0 2px;font-weight:600}
+.ans{margin-top:6px;max-width:22em}
+.starter{font-style:italic}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font-family:var(--display);font-weight:700;font-size:1rem;border:none;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--accent);color:var(--paper);text-decoration:none;display:inline-block}
+.hint{font-size:.85rem;color:var(--muted)}
+.meter{display:flex;flex-wrap:wrap;gap:8px}
+.chip{flex:1 1 120px;border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+.chip b{font-size:1.1rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.chip.on{border-color:var(--c);color:var(--c)}
+.chip.on b{color:var(--c)}
+textarea{min-height:190px;resize:vertical;line-height:1.6}
+.result{background:var(--ink);color:var(--bg);border:none}
+.result .eyebrow{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.bigscore{font-family:var(--display);font-weight:800;font-size:3rem;line-height:1;font-variant-numeric:tabular-nums}
+.grade{font-family:var(--mono);font-size:.9rem}
+.result .btn{background:var(--mark);color:#18233a}
+.result pre{white-space:pre-wrap;font-family:var(--mono);font-size:.78rem;background:color-mix(in srgb,var(--bg) 10%,transparent);border-radius:8px;padding:10px;max-height:220px;overflow:auto;margin:0}
+ol.submit{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+ol.submit li{display:flex;flex-direction:column;gap:8px}
+.toast{font-family:var(--mono);font-size:.82rem}
+.nojs{background:var(--bad-soft);color:var(--ink);border:2px solid var(--bad);border-radius:12px;padding:14px 16px;font-size:.95rem;line-height:1.5}
+.nojs b{color:var(--bad);display:block;margin-bottom:4px}
+@media (prefers-reduced-motion:no-preference){.opt,.btn,input,textarea{transition:border-color .15s,background .15s,box-shadow .15s}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="nojs" id="nojs" role="alert"><b>Завдання відкрилося в режимі перегляду, тому вправ не видно.</b> Збережи файл на телефон або комп'ютер і відкрий його в браузері: Chrome, Safari, Edge або Firefox. На Android: «Файли» → «Завантаження» → натисни на файл → «Відкрити за допомогою» → Chrome. На iPhone: «Поділитися» → «Відкрити в Safari».</div>
+</div>
+<script>
+const TASK={"id": "second_conditional_10", "title": "Second Conditional", "subject": "English", "grade": 10, "lead": "Умовні речення про уявні, малоймовірні ситуації в теперішньому чи майбутньому. Повтори правила й виконай чотири вправи.", "formUrl": "https://forms.gle/s8cGLy66DNZdfyf77", "rules": [{"name": "Будова", "formula": "If + Past Simple, would + V", "use": "Частини можна міняти місцями; кома ставиться, лише коли if стоїть на початку.", "example": "If I had a car, I would drive to the sea. / I would drive to the sea if I had a car."}, {"name": "Коли вживаємо", "formula": "уявне теперішнє / майбутнє", "use": "Ситуація нереальна або малоймовірна зараз. Past Simple тут не про минуле.", "example": "If I knew her number, I would call her. (але я не знаю)"}, {"name": "If I were you", "formula": "were для всіх осіб", "use": "Порада. Після if у формальному мовленні вживаємо were навіть з I, he, she, it.", "example": "If I were you, I wouldn't buy that phone."}, {"name": "Would → could / might", "formula": "could / might + V", "use": "Замість would можна could (можливість) або might (ймовірність). У частині з if would не вживаємо.", "example": "If we had more time, we could visit Lviv."}], "rulesNote": "Скорочення: <i>I'd = I would, wouldn't = would not, didn't = did not<\/i>.", "exercises": [{"type": "mc", "title": "Choose the correct form", "task": "Обери правильний варіант.", "items": [{"q": "If I ___ a million hryvnias, I would buy a house by the sea.", "o": ["had", "have", "would have"]}, {"q": "If Taras practised more, he ___ the guitar much better.", "o": ["will play", "would play", "plays"]}, {"q": "If I ___ you, I would apologise to her.", "o": ["am", "will be", "were"]}, {"q": "What ___ you do if you met a famous actor in the street?", "o": ["will", "would", "did"]}, {"q": "If we lived in Kyiv, we ___ go to the theatre every week.", "o": ["could", "can", "will"]}, {"q": "She would feel much better if she ___ to bed earlier.", "o": ["goes", "went", "would go"]}, {"q": "If it ___ so cold today, we would go for a walk.", "o": ["isn't", "weren't", "wouldn't be"]}, {"q": "I ___ that phone if I were you. It's far too expensive.", "o": ["wouldn't buy", "won't buy", "didn't buy"]}]}, {"type": "gaps", "title": "A Week Without Phones", "task": "Розкрий дужки, утвори Second Conditional. Скорочення (<i>I'd, wouldn't, didn't<\/i>) теж приймаються.", "text": "Our teacher asked the class: “What would you do if you didn't have a phone for a week?” Iryna answered first: “If I {{1|not / have}} my phone, I {{2|feel}} lost at first. But if I {{3|be}} free from notifications, I {{4|read}} more books.” Maksym laughed: “If my parents {{5|take}} my phone away, I {{6|go}} crazy! I {{7|not / know}} what to do in the evenings.” Sofiia disagreed: “If we {{8|spend}} less time online, we {{9|talk}} to each other more.” Finally our teacher smiled: “If you all {{10|can}} live without phones for a week, I {{11|give}} you no homework!”"}, {"type": "type", "title": "Correct the mistakes", "task": "У кожному реченні виділена частина неправильна. Напиши правильну форму.", "placeholder": "правильна форма", "items": [{"q": "If I <mark>will have<\/mark> more free time, I would learn Japanese."}, {"q": "If she studied harder, she <mark>will pass<\/mark> the exam."}, {"q": "If he <mark>would know<\/mark> the answer, he would tell us."}, {"q": "We <mark>would went<\/mark> to the mountains if we had a car."}, {"q": "If Olia <mark>lives<\/mark> closer to school, she wouldn't take the bus."}, {"q": "What <mark>will<\/mark> you do if you found a wallet in the street?"}]}, {"type": "writing", "title": "Head of School for a Day", "task": "Уяви, що ти директор школи на один день. Що б ти змінив і чому? Напиши 60–100 слів, використай щонайменше 4 речення Second Conditional.", "starter": "“If I were the head of our school for one day, I would…”", "placeholder": "…cancel all tests on Fridays. If students had more time to rest, they would…", "minWords": 60, "maxWords": 100, "patterns": [{"label": "If + Past", "re": "\\bif\\s+(\\w+\\s+){1,3}?(were|was|had|could|did|didn't|weren't|wasn't|\\w+ed)\\b"}, {"label": "would / could + V", "re": "\\b(would|wouldn't|could|couldn't|might|'d)\\s+(not\\s+)?[a-z]+\\b"}], "hint": "Лічильник лише підказує, чи є в тексті потрібні конструкції. Оцінює вчитель."}]};
+const K="W1swLCAxLCAyLCAxLCAwLCAxLCAxLCAwXSwgW1siZGlkbid0IGhhdmUiLCAiZGlkIG5vdCBoYXZlIl0sIFsid291bGQgZmVlbCIsICInZCBmZWVsIl0sIFsid2VyZSIsICJ3YXMiXSwgWyJ3b3VsZCByZWFkIiwgIidkIHJlYWQiXSwgWyJ0b29rIl0sIFsid291bGQgZ28iLCAiJ2QgZ28iXSwgWyJ3b3VsZG4ndCBrbm93IiwgIndvdWxkIG5vdCBrbm93Il0sIFsic3BlbnQiXSwgWyJ3b3VsZCB0YWxrIiwgIidkIHRhbGsiXSwgWyJjb3VsZCJdLCBbIndvdWxkIGdpdmUiLCAiJ2QgZ2l2ZSJdXSwgW1siaGFkIl0sIFsid291bGQgcGFzcyIsICInZCBwYXNzIl0sIFsia25ldyJdLCBbIndvdWxkIGdvIiwgIidkIGdvIl0sIFsibGl2ZWQiXSwgWyJ3b3VsZCJdXSwgbnVsbF0=";
+</script>
+<script>
+(function(){
+document.getElementById("nojs").hidden=true;
+const T=TASK;
+const KEY=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(K),c=>c.charCodeAt(0))));
+const app=document.getElementById("app");
+const el=(tag,cls,html)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e};
+const norm=s=>String(s).toLowerCase().replace(/[’`ʼ‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g," ").trim().replace(/[.!?,;]+$/,"");
+const okAns=(v,list)=>list.map(norm).includes(norm(v));
+const STORE="task:"+T.id;
+let locked=false,checkedAt=null;
+
+// header
+const hd=el("header");
+hd.appendChild(el("span","eyebrow",`${T.subject||"English"} · ${T.grade} клас · дистанційне навчання`));
+hd.appendChild(el("h1",null,T.title));
+hd.appendChild(el("p","lead",(T.lead?T.lead+" ":"")+"Перевірити роботу можна <b>лише один раз</b>: після перевірки відповіді змінити не вийде."));
+app.appendChild(hd);
+
+// student
+const sp=el("section","panel");
+sp.innerHTML=`<div class="student"><label class="f" for="name">Прізвище та ім'я<input type="text" id="name" autocomplete="name" placeholder="Петренко Марія"></label><label class="f" for="cls">Клас<input type="text" id="cls" placeholder="${T.grade}-А"></label></div>`;
+app.appendChild(sp);
+const nameI=sp.querySelector("#name"),clsI=sp.querySelector("#cls");
+
+// rules
+if(T.rules&&T.rules.length){
+ const rp=el("section","panel");
+ const d=el("details","rules");d.appendChild(el("summary",null,T.rulesTitle||"Повтори правила"));
+ const g=el("div","rulegrid");
+ T.rules.forEach((r,i)=>{const c=el("div","rule");c.style.setProperty("--c",`var(--c${i%4+1})`);
+  c.innerHTML=`<h3>${r.name}</h3>${r.formula?`<span class="formula">${r.formula}</span>`:""}${r.use?`<p class="use">${r.use}</p>`:""}${r.example?`<p class="ex">${r.example}</p>`:""}`;g.appendChild(c)});
+ d.appendChild(g);if(T.rulesNote)d.appendChild(el("p","hint",T.rulesNote)).style.marginTop="14px";
+ rp.appendChild(d);app.appendChild(rp);
+}
+
+// exercises
+const EX=[];
+T.exercises.forEach((ex,ei)=>{
+ const n=ei+1,key=KEY[ei];
+ const sec=el("section","panel");sec.id="ex"+n;
+ const pts=ex.type==="writing"?"творча, оцінює вчитель":`${ex.type==="gaps"?key.length:ex.items.length} ${plural(ex.type==="gaps"?key.length:ex.items.length)}`;
+ sec.innerHTML=`<div class="ex-head"><div><span class="eyebrow">Вправа ${n} · ${pts}</span><h2>${ex.title}</h2></div><span class="score"></span></div>${ex.task?`<p class="task">${ex.task}</p>`:""}`;
+ const score=sec.querySelector(".score");
+ const X={ex,key,score,sec,type:ex.type};
+ if(ex.type==="mc"){
+  const ol=el("ol","items");X.sel=ex.items.map(()=>null);X.btns=[];X.fbs=[];
+  ex.items.forEach((it,i)=>{const li=el("li");const q=el("div","q",`<p>${it.q.replace(/_{3,}/,"<b>_____</b>")}</p>`);const box=el("div","opts");X.btns[i]=[];
+   it.o.forEach((o,j)=>{const b=el("button","opt");b.type="button";b.textContent=o;b.setAttribute("aria-pressed","false");
+    b.onclick=()=>{if(locked)return;X.sel[i]=j;X.btns[i].forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));save()};box.appendChild(b);X.btns[i].push(b)});
+   q.appendChild(box);li.appendChild(q);const fb=el("p","fb");li.appendChild(fb);X.fbs.push(fb);ol.appendChild(li)});
+  sec.appendChild(ol);
+ }else if(ex.type==="gaps"){
+  const st=el("div","story");X.inputs=[];
+  ex.text.split(/(\{\{\d+\|[^}]*\}\})/).forEach(part=>{const m=part.match(/^\{\{(\d+)\|([^}]*)\}\}$/);
+   if(!m){st.appendChild(document.createTextNode(part));return}
+   const span=el("span",null,`<span class="hintv">${m[1]}${m[2]?` (${m[2]})`:""}</span> `);
+   const inp=el("input","gap");inp.type="text";inp.autocomplete="off";inp.spellcheck=false;inp.setAttribute("aria-label",`Пропуск ${m[1]}${m[2]?": "+m[2]:""}`);inp.oninput=save;
+   span.appendChild(inp);st.appendChild(span);X.inputs.push(inp)});
+  sec.appendChild(st);X.fbl=el("div","fbline");sec.appendChild(X.fbl);
+ }else if(ex.type==="type"){
+  const ol=el("ol","items");X.inputs=[];X.fbs=[];
+  ex.items.forEach((it,i)=>{const li=el("li");const q=el("div","q",`<p>${it.q}</p>`);
+   const inp=el("input","ans");inp.type="text";inp.autocomplete="off";inp.spellcheck=false;inp.placeholder=it.placeholder||ex.placeholder||"твоя відповідь";inp.setAttribute("aria-label",`Відповідь до пункту ${i+1}`);inp.oninput=save;
+   q.appendChild(inp);li.appendChild(q);const fb=el("p","fb");li.appendChild(fb);X.fbs.push(fb);X.inputs.push(inp);ol.appendChild(li)});
+  sec.appendChild(ol);
+ }else if(ex.type==="writing"){
+  if(ex.starter)sec.appendChild(el("p","starter",ex.starter));
+  const lab=el("label","f");lab.textContent="Твій текст";const ta=el("textarea");ta.placeholder=ex.placeholder||"";lab.appendChild(ta);sec.appendChild(lab);X.ta=ta;
+  const meter=el("div","meter");X.chips=[];
+  const wc=el("div","chip",`<span>слів (${ex.minWords||0}–${ex.maxWords||"…"})</span><b>0</b>`);wc.style.setProperty("--c","var(--accent)");meter.appendChild(wc);
+  (ex.patterns||[]).forEach((p,i)=>{const c=el("div","chip",`<span>${p.label}</span><b>0</b>`);c.style.setProperty("--c",`var(--c${(i+1)%4+1})`);meter.appendChild(c);X.chips.push({c,re:new RegExp(p.re,"gi")})});
+  sec.appendChild(meter);if(ex.hint)sec.appendChild(el("p","hint",ex.hint));
+  X.count=()=>{const t=ta.value;const words=(t.match(/[\p{L}']+/gu)||[]).length;wc.querySelector("b").textContent=words;wc.classList.toggle("on",words>=(ex.minWords||1));
+   X.chips.forEach(ch=>{const k=(t.match(ch.re)||[]).length;ch.c.querySelector("b").textContent=k;ch.c.classList.toggle("on",k>0)});return words};
+  ta.oninput=()=>{X.count();save()};
+ }
+ EX.push(X);app.appendChild(sec);
+});
+function plural(n){const a=n%10,b=n%100;return a===1&&b!==11?"бал":a>=2&&a<=4&&(b<10||b>=20)?"бали":"балів"}
+
+// check controls
+const act=el("div","actions");act.innerHTML=`<button class="btn" id="check" type="button">Перевірити й здати</button><span class="hint" id="checkmsg"></span>`;app.appendChild(act);
+const checkBtn=act.querySelector("#check"),msg=act.querySelector("#checkmsg");
+
+// result
+const res=el("section","panel result");res.hidden=true;
+res.innerHTML=`<span class="eyebrow">Твій результат</span><div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap"><span class="bigscore" id="big"></span><span class="grade" id="grade"></span></div>
+<p>Відповіді зафіксовано, помилки позначено червоним. Тепер здай роботу вчителю${T.formUrl?" у два кроки":""}:</p>
+<ol class="submit"><li><span>${T.formUrl?"1. ":""}Скопіюй звіт.</span><div class="actions"><button class="btn" id="copy" type="button">Скопіювати звіт</button><span class="toast" id="toast" aria-live="polite"></span></div></li>
+${T.formUrl?`<li><span>2. Відкрий форму, впиши ім'я і клас, встав звіт у поле «Звіт» і натисни «Надіслати».</span><div class="actions"><a class="btn" href="${T.formUrl}" target="_blank" rel="noopener">Здати роботу →</a></div></li>`:`<li><span>Надішли звіт учителю так, як він просив.</span></li>`}</ol>
+<pre id="report"></pre>`;
+app.appendChild(res);
+
+function mark(e,good){e.classList.remove("ok","bad");e.classList.add(good?"ok":"bad")}
+function fbSet(fb,good,empty){fb.className="fb "+(good?"ok":"bad");fb.textContent=good?"✓ правильно":empty?"✗ немає відповіді":"✗ помилка"}
+
+function grade(fresh){
+ let total=0,max=0;const lines=[];
+ EX.forEach((X,ei)=>{const n=ei+1;let s=0,m=0;const parts=[];
+  if(X.type==="mc"){X.ex.items.forEach((it,i)=>{m++;const j=X.sel[i];const good=j===X.key[i];if(good)s++;if(j!==null)mark(X.btns[i][j],good);fbSet(X.fbs[i],good,j===null);parts.push(`${i+1}) ${j===null?"—":it.o[j]}${good?"":" ✗"}`)})}
+  else if(X.type==="gaps"){const wrong=[];X.inputs.forEach((inp,i)=>{m++;const good=okAns(inp.value,X.key[i]);mark(inp,good);if(good)s++;else wrong.push(i+1);parts.push(`${i+1}) ${inp.value.trim()||"—"}${good?"":" ✗"}`)});
+   X.fbl.className="fbline fb "+(wrong.length?"bad":"ok");X.fbl.textContent=wrong.length?"✗ Помилки в пропусках: "+wrong.join(", "):"✓ Усі пропуски заповнено правильно"}
+  else if(X.type==="type"){X.inputs.forEach((inp,i)=>{m++;const good=okAns(inp.value,X.key[i]);mark(inp,good);if(good)s++;fbSet(X.fbs[i],good,!inp.value.trim());parts.push(`${i+1}) ${inp.value.trim()||"—"}${good?"":" ✗"}`)})}
+  else if(X.type==="writing"){const w=X.count();lines.push(`Вправа ${n} (творча, ${w} слів):\n${X.ta.value.trim()||"(не виконано)"}`);return}
+  X.score.textContent=`${s} / ${m}`;total+=s;max+=m;lines.push(`Вправа ${n}: ${s}/${m} — ${parts.join("; ")}`)});
+ const ua12=max?Math.max(1,Math.round(total/max*12)):0;
+ res.querySelector("#big").textContent=`${total}/${max}`;
+ const hasWriting=EX.some(X=>X.type==="writing");
+ res.querySelector("#grade").textContent=`≈ ${ua12} балів із 12 за вправи з автоперевіркою`+(hasWriting?" · творчу вправу оцінить учитель":"");
+ if(fresh)checkedAt=new Date().toISOString();
+ lock();save();
+ res.querySelector("#report").textContent=[`${T.title} — ${nameI.value.trim()}, ${clsI.value.trim()||"(клас не вказано)"}`,`Перевірено: ${new Date(checkedAt).toLocaleString("uk-UA")}`,`Результат: ${total}/${max} (≈ ${ua12}/12)`,...lines].join("\n");
+ res.hidden=false;
+ if(fresh)res.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+}
+function lock(){locked=true;
+ document.querySelectorAll(".opt").forEach(b=>b.disabled=true);
+ document.querySelectorAll("input,textarea").forEach(x=>x.readOnly=true);
+ checkBtn.hidden=true;msg.textContent="Роботу перевірено. Змінити відповіді вже не можна."}
+
+let armed=false,armTimer=null;
+checkBtn.onclick=()=>{if(locked)return;
+ if(!nameI.value.trim()){msg.textContent="Спочатку впиши прізвище та ім'я вгорі сторінки.";nameI.focus();return}
+ if(!armed){let empty=0,shortW=false;
+  EX.forEach(X=>{if(X.type==="mc")empty+=X.sel.filter(v=>v===null).length;else if(X.inputs)empty+=X.inputs.filter(i=>!i.value.trim()).length;else if(X.type==="writing"&&X.count()<(X.ex.minWords||1))shortW=true});
+  armed=true;checkBtn.textContent="Так, перевірити";
+  msg.textContent="Перевірити можна лише один раз, після цього відповіді змінити не вийде."+(empty?` Без відповіді: ${empty}.`:"")+(shortW?" Творча вправа ще не дописана.":"");
+  clearTimeout(armTimer);armTimer=setTimeout(()=>{armed=false;checkBtn.textContent="Перевірити й здати";msg.textContent=""},8000);return}
+ clearTimeout(armTimer);grade(true)};
+
+res.querySelector("#copy").onclick=()=>{const pre=res.querySelector("#report"),t=res.querySelector("#toast");
+ const fallback=()=>{const sel=getSelection(),r=document.createRange();r.selectNodeContents(pre);sel.removeAllRanges();sel.addRange(r);t.textContent="Текст виділено, натисни Ctrl+C (або «Копіювати»)."};
+ try{navigator.clipboard.writeText(pre.textContent).then(()=>t.textContent="Скопійовано. Встав звіт у форму вчителя.",fallback)}catch(e){fallback()}};
+
+function save(){try{localStorage.setItem(STORE,JSON.stringify({n:nameI.value,c:clsI.value,locked,t:checkedAt,
+ ex:EX.map(X=>X.type==="mc"?X.sel:X.inputs?X.inputs.map(i=>i.value):X.ta?X.ta.value:null)}))}catch(e){}}
+nameI.oninput=save;clsI.oninput=save;
+try{const d=JSON.parse(localStorage.getItem(STORE)||"null");if(d){nameI.value=d.n||"";clsI.value=d.c||"";
+ (d.ex||[]).forEach((v,ei)=>{const X=EX[ei];if(!X||v==null)return;
+  if(X.type==="mc")v.forEach((j,i)=>{if(j!==null&&X.btns[i]&&X.btns[i][j]){X.sel[i]=j;X.btns[i][j].setAttribute("aria-pressed","true")}});
+  else if(X.inputs)v.forEach((s,i)=>{if(X.inputs[i])X.inputs[i].value=s});
+  else if(X.ta)X.ta.value=v});
+ if(d.locked&&d.t){checkedAt=d.t;grade(false)}}}catch(e){}
+EX.forEach(X=>X.count&&X.count());
+})();
+</script>
+</body>
+</html>
